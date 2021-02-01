@@ -11,12 +11,18 @@
 
     <properties>
         <java.version>11</java.version>
+        <main.basedir>${project.basedir}</main.basedir>
     </properties>
     <modules>
         <module>feeding</module>
         <module>care</module>
         <module>talks</module>
         <module>staff</module>
+        <module>tour</module>
+        <module>locator</module>
+        <module>visitor</module>
+        <module>agency</module>
+        <module>hybrid</module>
     </modules>
 
     <build>
@@ -29,7 +35,44 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <id>compile</id>
+                    </execution>
+                </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>module-jar</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${main.basedir}/mods</outputDirectory>
+                            <finalName>${module.name}</finalName>
+                            <classifier>module</classifier>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>default-jar</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 </project>

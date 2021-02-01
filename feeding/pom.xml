@@ -12,4 +12,10 @@
     <artifactId>feeding</artifactId>
     <name>Feeding stuff</name>
 
+
+    <properties>
+        <module.name>zoo.animal.feeding</module.name>
+        <main.basedir>${project.parent.basedir}</main.basedir>
+    </properties>
+
 </project>
